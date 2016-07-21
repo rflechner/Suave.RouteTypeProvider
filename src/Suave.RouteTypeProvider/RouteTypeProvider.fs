@@ -184,11 +184,7 @@ open UrlTypeParsers
 open System.Collections.Generic
 
 type PathRoute = string -> WebPart
-module TestModule =
-  let pp:PathRoute = path
-  let r = path "/hello" >=> OK "Hello World"
-  let cc = choose [pp ""]
-
+module Helpers =
   let pathDico (format:string) (h : IDictionary<string, obj> -> WebPart) : WebPart =
     let template = parseTemplate format
     let buildDictionary (args:PathArgValue list) =
@@ -321,7 +317,7 @@ type RouteTypeProvider () as this =
                     fun args ->
                         <@@
                           let o = (%%args.Head : FSharpFunc<IDictionary<string, obj>, WebPart>)
-                          TestModule.PathModelBuilder(template).GetWebPart(o)
+                          Helpers.PathModelBuilder(template).GetWebPart(o)
                         @@>)
         do ty.AddMember buildRouteMeth
 

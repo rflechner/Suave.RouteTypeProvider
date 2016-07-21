@@ -2,6 +2,15 @@
 // This block of code is omitted in the generated HTML documentation. Use
 // it to define helpers that you do not want to show in the documentation.
 #I "../../bin/Suave.RouteTypeProvider"
+#r "Suave.RouteTypeProvider.dll"
+#r "Suave.dll"
+
+open RouteTypeProvider
+open System
+open Suave
+open Suave.Operators
+open Suave.Filters
+open Suave.Successful
 
 (**
 Suave.RouteTypeProvider
@@ -20,60 +29,43 @@ Documentation
   <div class="span1"></div>
 </div>
 
-Example
--------
+<div class="row">
+  <div class="span1"></div>
+  <div class="span6">
+    <div class="well well-small" id="nuget">
+      The Suave.RouteTypeProvider library can be <a href="https://www.myget.org/Package/Details/romcyber?packageType=nuget&packageId=Suave.RouteTypeProvider">installed from Paket</a>:
+      <pre>
+group Romcyber
+  source https://www.myget.org/F/romcyber/api/v3/index.json
+  nuget Suave.RouteTypeProvider
+      </pre>
+    </div>
+  </div>
+  <div class="span1"></div>
+</div>
 
-This example demonstrates using a function defined in this sample library.
+What is Suave.RouteTypeProvider ?
+----------------------------
+
+[Suave](https://suave.io/) is a FSharp lightweight web server principally used to develop REST APIs
+
+We can declare templatized and strongly typed routes like :
 
 *)
-#r "Suave.RouteTypeProvider.dll"
-#r "Suave.dll"
-open Suave.RouteTypeProvider
-open RouteTypeProvider
-open System
-open Suave
-open Suave.Operators
-open Suave.Filters
-open Suave.Writers
-open Suave.Successful
 
-module Routes =
-  type FindUserById = routeTemplate<"/findUser/{id:int}">
-  type SayBonjour = routeTemplate<template="/bonjour/{Name:string}", description="Say hello in french">
-  type AdditionRoute = routeTemplate<"/add/{value1:int}/{value2:int}">
-
-let now1 : WebPart =
-  fun (x : HttpContext) ->
-    async {
-      return! OK (DateTime.Now.ToString()) x
-    }
-let time1 = GET >=> path "/time" >=> now1
-
-let api =
- choose [
-    time1
-    GET >=> Routes.FindUserById.Returns(fun m -> OK <| sprintf "id is: %A" m.id)
-    GET >=> Routes.SayBonjour.Returns(fun m -> OK <| sprintf "Name: %A" m.Name)
-    GET >=> Routes.AdditionRoute.Returns(fun m -> OK <| (m.value1 + m.value2).ToString())
-  ]
-
-startWebServer defaultConfig api
+// a and b params are integers
+let additionRoute = GET >=> pathScan "/add/%d/%d" (fun (a,b) -> OK((a + b).ToString()))
 
 (**
-Some more info
+Suave.RouteTypeProvider is a library providing strongly typed and <b>named</b> params
+*)
+type SayBonjour = routeTemplate<template="/bonjour/{Name:string}/{FirstName:string}/{Age:int}">
+SayBonjour.Returns (fun m -> OK <| sprintf "Bonjour %s %s, your age is %d" m.Name m.FirstName m.Age)
 
-Samples & documentation
------------------------
+(**
 
-The library comes with comprehensible documentation.
-It can include tutorials automatically generated from `*.fsx` files in [the content folder][content].
-The API reference is automatically generated from Markdown comments in the library implementation.
+The type provider will create a type for each route and you will be be able to access parameter properties using your autocompletion
 
- * [Tutorial](tutorial.html) contains a further explanation of this sample library.
-
- * [API Reference](reference/index.html) contains automatically generated documentation for all types, modules
-   and functions in the library. This includes additional brief samples on using most of the
-   functions.
 
 Contributing and copyright
 --------------------------
