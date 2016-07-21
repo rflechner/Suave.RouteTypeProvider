@@ -48,7 +48,7 @@ let api =
     // go to http://localhost:8083/bonjour/homer/simpson/63
 
     GET >=> Routes.AdditionRoute.Returns(fun m -> OK <| (m.value1 + m.value2).ToString())
-    // go to http://localhost:8083/time
+    // go to http://localhost:8083/add/98/5
   ]
 
 startWebServer defaultConfig api
