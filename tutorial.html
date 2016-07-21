@@ -76,6 +76,7 @@
 <span class="l">38: </span>
 <span class="l">39: </span>
 <span class="l">40: </span>
+<span class="l">41: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="prep">#r</span> <span class="s">&quot;Suave.RouteTypeProvider.dll&quot;</span>
 <span class="prep">#r</span> <span class="s">&quot;Suave.dll&quot;</span>
@@ -88,7 +89,8 @@
 
 <span class="k">module</span> <span class="t">Routes</span> <span class="o">=</span>
   <span class="k">type</span> <span onmouseout="hideTip(event, 'fs7', 10)" onmouseover="showTip(event, 'fs7', 10)" class="t">FindUserById</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 11)" onmouseover="showTip(event, 'fs8', 11)" class="t">routeTemplate</span><span class="o">&lt;</span><span class="s">&quot;/findUser/{id:int}&quot;</span><span class="o">&gt;</span>
-  <span class="k">type</span> <span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="t">SayBonjour</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 13)" onmouseover="showTip(event, 'fs8', 13)" class="t">routeTemplate</span><span class="o">&lt;</span><span class="i">template</span><span class="o">=</span><span class="s">&quot;/bonjour/{Name:string}/{FirstName:string}/{Age:int}&quot;</span>, <span class="i">description</span><span class="o">=</span><span class="s">&quot;Say hello in french&quot;</span><span class="o">&gt;</span>
+  <span class="k">type</span> <span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="t">SayBonjour</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 13)" onmouseover="showTip(event, 'fs8', 13)" class="t">routeTemplate</span><span class="o">&lt;</span><span class="i">template</span><span class="o">=</span><span class="s">&quot;/bonjour/{Name:string}/{FirstName:string}/{Age:int}&quot;</span>,
+                                  <span class="i">description</span><span class="o">=</span><span class="s">&quot;Say hello in french&quot;</span><span class="o">&gt;</span>
   <span class="k">type</span> <span onmouseout="hideTip(event, 'fs10', 14)" onmouseover="showTip(event, 'fs10', 14)" class="t">AdditionRoute</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 15)" onmouseover="showTip(event, 'fs8', 15)" class="t">routeTemplate</span><span class="o">&lt;</span><span class="s">&quot;/add/{value1:int}/{value2:int}&quot;</span><span class="o">&gt;</span>
 
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs11', 16)" onmouseover="showTip(event, 'fs11', 16)" class="f">now1</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs12', 17)" onmouseover="showTip(event, 'fs12', 17)" class="t">WebPart</span> <span class="o">=</span>
@@ -107,7 +109,7 @@
     <span class="c">// go to http://localhost:8083/findUser/789</span>
 
     <span onmouseout="hideTip(event, 'fs21', 42)" onmouseover="showTip(event, 'fs21', 42)" class="f">GET</span> <span class="o">&gt;</span><span class="o">=&gt;</span> <span onmouseout="hideTip(event, 'fs25', 43)" onmouseover="showTip(event, 'fs25', 43)" class="t">Routes</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 44)" onmouseover="showTip(event, 'fs9', 44)" class="t">SayBonjour</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs26', 45)" onmouseover="showTip(event, 'fs26', 45)" class="f">Returns</span> (
-      <span class="k">fun</span> <span onmouseout="hideTip(event, 'fs27', 46)" onmouseover="showTip(event, 'fs27', 46)" class="i">m</span> <span class="k">-&gt;</span> 
+      <span class="k">fun</span> <span onmouseout="hideTip(event, 'fs27', 46)" onmouseover="showTip(event, 'fs27', 46)" class="i">m</span> <span class="k">-&gt;</span>
         <span onmouseout="hideTip(event, 'fs16', 47)" onmouseover="showTip(event, 'fs16', 47)" class="f">OK</span> <span class="o">&lt;|</span> <span onmouseout="hideTip(event, 'fs28', 48)" onmouseover="showTip(event, 'fs28', 48)" class="f">sprintf</span> <span class="s">&quot;Bonjour </span><span class="pf">%s</span><span class="s"> </span><span class="pf">%s</span><span class="s">, your age is </span><span class="pf">%d</span><span class="s">&quot;</span> <span onmouseout="hideTip(event, 'fs27', 49)" onmouseover="showTip(event, 'fs27', 49)" class="i">m</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs30', 50)" onmouseover="showTip(event, 'fs30', 50)" class="i">Name</span> <span onmouseout="hideTip(event, 'fs27', 51)" onmouseover="showTip(event, 'fs27', 51)" class="i">m</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs31', 52)" onmouseover="showTip(event, 'fs31', 52)" class="i">FirstName</span> <span onmouseout="hideTip(event, 'fs27', 53)" onmouseover="showTip(event, 'fs27', 53)" class="i">m</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs32', 54)" onmouseover="showTip(event, 'fs32', 54)" class="i">Age</span>
       )
     <span class="c">// go to http://localhost:8083/bonjour/homer/simpson/63</span>
