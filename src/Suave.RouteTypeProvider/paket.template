@@ -1,0 +1,25 @@
+type project
+title
+    Suave.RouteTypeProvider
+owners
+    rflechner
+authors 
+    rflechner
+projectUrl
+    http://github.com/rflechner/Suave.RouteTypeProvider
+iconUrl
+    https://raw.githubusercontent.com/rflechner/Suave.RouteTypeProvider/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/rflechner/Suave.RouteTypeProvider/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    suave typeprovider
+summary
+    A Type Provider helping to create strongly typed routes like WebApi format
+description
+    A Type Provider helping to create strongly typed routes like WebApi format
+
+
