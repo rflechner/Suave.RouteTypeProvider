@@ -1,0 +1,29 @@
+type file
+id
+  Suave.RouteTypeProvider
+authors
+  rflechner
+owners
+  rflechner
+description
+  This project is a POC helping you to document your Suave services with RouteTypeProvider. RouteTypeProvider UI is embedded in resources and a webpart serving it is automatically added.
+projectUrl
+  http://github.com/rflechner/Suave.RouteTypeProvider
+iconUrl
+  https://raw.githubusercontent.com/rflechner/Suave.RouteTypeProvider/master/docs/files/img/logo.png
+licenseUrl
+  http://github.com/rflechner/Suave.RouteTypeProvider/blob/master/LICENSE.txt
+requireLicenseAcceptance
+  false
+copyright
+  Copyright 2016
+tags
+  suave fsharp RouteTypeProvider
+files
+  bin/Suave.RouteTypeProvider/Suave.RouteTypeProvider.dll ==> lib
+  bin/Suave.RouteTypeProvider/Suave.RouteTypeProvider.pdb ==> lib
+dependencies
+  FSharp.Core
+  suave
+  Newtonsoft.Json
+

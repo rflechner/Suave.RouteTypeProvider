@@ -177,19 +177,21 @@ Target "NuGet" (fun _ ->
         { p with
             OutputPath = "bin"
             Version = release.NugetVersion
+            TemplateFile = "paket.template"
             ReleaseNotes = toLines release.Notes})
 )
 
 Target "PublishNuget" (fun _ ->
+    let nugetkey = Environment.GetEnvironmentVariable "nugetkey"
     Paket.Push(fun p ->
         { p with
+            PublishUrl = "https://www.myget.org/F/romcyber/api/v2/package"
+            ApiKey = nugetkey
             WorkingDir = "bin" })
 )
 
-
 // --------------------------------------------------------------------------------------
 // Generate the documentation
-
 
 let fakePath = "packages" </> "build" </> "FAKE" </> "tools" </> "FAKE.exe"
 let fakeStartInfo script workingDirectory args fsiargs environmentVars =
@@ -376,6 +378,7 @@ Target "All" DoNothing
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "CopyBinaries"
+  ==> "NuGet"
   ==> "RunTests"
   ==> "GenerateReferenceDocs"
   ==> "GenerateDocs"
@@ -387,8 +390,9 @@ Target "All" DoNothing
 #else
   =?> ("SourceLink", Pdbstr.tryFind().IsSome )
 #endif
-  ==> "NuGet"
+//  ==> "NuGet"
   ==> "BuildPackage"
+
 
 "CleanDocs"
   ==> "GenerateHelp"
