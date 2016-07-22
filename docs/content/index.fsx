@@ -5,12 +5,12 @@
 #r "Suave.RouteTypeProvider.dll"
 #r "Suave.dll"
 
-open RouteTypeProvider
 open System
 open Suave
 open Suave.Operators
 open Suave.Filters
 open Suave.Successful
+open Suave.RouteTypeProvider
 
 (**
 Suave.RouteTypeProvider

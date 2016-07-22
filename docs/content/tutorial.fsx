@@ -14,12 +14,12 @@ This example demonstrates using a the type provider to declare your routes in Su
 
 #r "Suave.RouteTypeProvider.dll"
 #r "Suave.dll"
-open RouteTypeProvider
 open System
 open Suave
 open Suave.Operators
 open Suave.Filters
 open Suave.Successful
+open Suave.RouteTypeProvider
 
 module Routes =
   type FindUserById = routeTemplate<"/findUser/{id:int}">

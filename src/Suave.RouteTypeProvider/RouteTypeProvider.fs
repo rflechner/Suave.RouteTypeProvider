@@ -257,7 +257,7 @@ type RouteHandler =
 [<TypeProvider>]
 type RouteTypeProvider () as this =
   inherit TypeProviderForNamespaces ()
-  let ns = "RouteTypeProvider"
+  let ns = "Suave.RouteTypeProvider"
   let asm = Assembly.GetExecutingAssembly()
   let tyName = "routeTemplate"
   let myType = ProvidedTypeDefinition(asm, ns, tyName, None)
