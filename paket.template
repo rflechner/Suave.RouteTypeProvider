@@ -6,7 +6,7 @@ authors
 owners
   rflechner
 description
-  This project is a POC helping you to document your Suave services with RouteTypeProvider. RouteTypeProvider UI is embedded in resources and a webpart serving it is automatically added.
+  This project is a POC helping you to document your Suave services with RouteTypeProvider.
 projectUrl
   http://github.com/rflechner/Suave.RouteTypeProvider
 iconUrl
